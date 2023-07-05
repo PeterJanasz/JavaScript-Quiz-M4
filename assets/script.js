@@ -26,9 +26,9 @@ startButton.disabled = true;
 function startTimer() {
     timer = setInterval(function() {
         timerCount--;
-        timerElement.textContent = timerCount;
+        timerElement.textContent = "Time Remaining: " + timerCount;
         if (incorrect) {
-            timerCount--10;
+            timerCount = -10;
         }
         if (timerCount === 0){
             clearInterval(timer);
@@ -37,4 +37,5 @@ function startTimer() {
     }
 
     
+
 
