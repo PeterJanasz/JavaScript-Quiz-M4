@@ -21,25 +21,26 @@ getIncorrect = [];
 
 //start quiz with timer set at 60sec, subtraccting 10sec for incorrect answer
 function startQuiz() {
-timerCount = 60;
-//disable start button once quiz starts
-startButton.disabled = true;
-
-}
-
-function startTimer() {
+    // declare incorrect variable
+    var incorrect = false;
+  
+    timerCount = 60;
     timer = setInterval(function() {
-        timerCount--;
-        timerElement.textContent = "Time Remaining: " + timerCount;
-        if (incorrect) {
-            timerCount = -10;
-        }
-        if (timerCount === 0){
-            clearInterval(timer);
-        }
-        }, 1000);
-    }
+      timerCount--;
+      timerElement.textContent = "Time: " + timerCount;
+  
+      // check if user answered previous question incorrectly
+      if (incorrect) {
+        // deduct 10 seconds from timer
+        timerCount -= 10;
+      }
+  
+      // check if timer count reaches 0
+      if (timerCount === 0) {
+        clearInterval(timer);
+      }
+    }, 1000);
+  }
 
     
-
-
+    startButton.addEventListener("click", startQuiz);

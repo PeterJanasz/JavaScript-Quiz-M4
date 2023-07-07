@@ -4,11 +4,17 @@
 
 header {
     width: 100%;
-    height: 30px;
+    height: 50px;
     padding: 10px;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid blue
+}
+
+h1{
+    margin: 0px;
+    text-align: center;
+    align-self: center;
 }
 
 main {
@@ -19,7 +25,7 @@ main {
 }
 
 #container{
-padding-bottom: 50px;
+padding-bottom: 40px;
 width: 800px;
 max-width: 80%;
 border: 2px;
@@ -39,6 +45,10 @@ button {
     padding: 5px;
 }
 
+button:hover {
+    background-color: #ddd;
+}
+
 #answers {
     width: 200px;
     padding: 10px;
@@ -50,4 +60,12 @@ button {
 #start {
     padding: 10px;
     font-size: 20px;
+}
+
+footer {
+    border-top: 1px solid blue;
+    margin-top: 30px;
+    text-align: center;
+    font-size: 25px;
+    padding-top: 20px;
 }
