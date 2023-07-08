@@ -6,12 +6,13 @@ var correct = document.querySelector(".correct");
 var incorrect = document.querySelector(".incorrect");
 
 var correct = true;
-var inCorrect = false;//do i need a false?
+var inCorrect = false;
 var timer;
 var timerCount;
 var questions;
 var answerOptions;
 var answer;
+
 
 //collect user score
 function init() {
@@ -22,7 +23,7 @@ getIncorrect = [];
 //start quiz with timer set at 60sec, subtraccting 10sec for incorrect answer
 function startQuiz() {
     // declare incorrect variable
-    var incorrect = false;
+    var incorrect = false;//do i need this in function?
   
     timerCount = 60;
     timer = setInterval(function() {

@@ -49,6 +49,10 @@ button:hover {
     background-color: #ddd;
 }
 
+.start-button::after {
+    visibility: hidden;/*hide start button*/
+}
+
 #answers {
     width: 200px;
     padding: 10px;
