@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Quiz</title>
-    <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="stylesheet" href="./assets/quiz.css" />
 </head>
 <body>
     <header>
             <nav class="scores"><!--create classes for JS-->
-                <a href="">View High Scores</a> 
+                <a href="./score.html">View High Scores</a> 
             </nav>
             <h1>JavaScript Quiz</h1>
             <div class="timer"><!--create classes for JS-->
@@ -21,17 +21,17 @@
 
     <main>
 
-        <section id="container"><!--create id for CSS-->
+        <section id="container"><!--create id for CSS. Class for JS-->
             <h2>Question #</h2>
-            <p>Question</p>
-            <div id="answers"><!--create id for CSS-->
+            <p class="question">Question</p>
+            <div class="answers" id="answers"><!--create id for CSS. Class for JS-->
                 <button>Answer 1.</button>
                 <button>Answer 2.</button>
                 <button>Answer 3.</button>
                 <button>Answer 4.</button>
             </div>
             <div>
-                <button id="start" class="start-button"><!--create classes for JS-->
+                <button id="start" class="start-button"><!--create id for CSS. Class for JS-->
                     Start Quiz
                 </button>
                 
@@ -42,6 +42,6 @@
     <footer>
         Correct!
     </footer>
-    <script src="assets/script.js"></script>
+    <script src="assets/quiz.js"></script>
 </body>
 </html>

@@ -49,9 +49,18 @@ button:hover {
     background-color: #ddd;
 }
 
-.start-button::after {
-    visibility: hidden;/*hide start button*/
+/*change button color based off correect or incorrect answer*/
+button.correct {
+    background-color: green;
 }
+
+button.incorrect {
+    background-color: red;
+}
+
+/*.start-button::after {
+    visibility: hidden;/*hide start button
+}*/
 
 #answers {
     width: 200px;
