@@ -50,17 +50,20 @@ button:hover {
 }
 
 /*change button color based off correect or incorrect answer*/
-button.correct {
+.correct {
     background-color: green;
 }
 
-button.incorrect {
+.incorrect {
     background-color: red;
 }
 
-/*.start-button::after {
-    visibility: hidden;/*hide start button
-}*/
+#start-screen{
+    text-align: center;
+}
+.hidden{
+display: none;
+}
 
 #answers {
     width: 200px;
