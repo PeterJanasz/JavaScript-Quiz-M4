@@ -1,7 +1,7 @@
 var timerElement = document.querySelector(".timer");
 var scores = document.querySelector(".scores");
 var startButton = document.querySelector(".start-button");
-var questionElement = document.querySelector(".question");//should it be questionElement?
+var questionElement = document.querySelector(".question");
 var questionContainer = document.querySelector("#question-container");
 var answerContainer = document.querySelector(".answers");
 var correct = document.querySelector(".correct");
@@ -18,7 +18,7 @@ var correct = true;
 var timer;
 var timerCount;
 var questions;
-//var answers;
+var score;
 //create array for questions and answers
 var questions = [
   {
@@ -41,45 +41,44 @@ var questions = [
     answers: ["<!--This is a comment-->", "//This is a comment", "'This is a comment", "* This is a comment*"],
     correct: "//This is a comment"
   },
-  
+  {
+    question: "Which of the following type of variable is visible only within a function where it is defined?",
+    answers: ["Global Variable", "Local Variable", "Both of the above", "none of the above"],
+    correct: "Local Variable",
+  }
 ]
-
-
-
-/*renderLastRegistered(); {
-  var correct = localStorage.getCorrect("correct")
-  var incorrect = localStorage.getIncorrect("incorrect")
-
-}*/
-
 
 //start quiz with timer set at 60sec, subtraccting 10sec for incorrect answer
 function startQuiz() {
   startScreen.setAttribute("class","hidden");
   questionContainer.removeAttribute("class")
-    // declare incorrect variable
-    var incorrect = false;//do i need this in function?
-  
     timerCount = 60;
     timer = setInterval(function() {
       timerCount--;
+
+      if (timerCount < 0){
+        timerCount = 0;
+      }
+
       timerElement.textContent = "Time: " + timerCount;
   
       // check if timer count reaches 0
-      if (timerCount === 0) {
+      if (timerCount <= 0) {
         clearInterval(timer);
+        
       }
     }, 1000);
     getQuestion();
   }
 
+//create function for questions and onclick event to next question when answer choosen.
   function getQuestion() {
     console.log(currentQuestionIndex)
    var currentQuestion = questions[currentQuestionIndex]
     questionElement.textContent = currentQuestion.question;
     
     answers.innerHTML = "";
-
+    //add onclick event to next question 
     for (var i = 0; i < currentQuestion.answers.length; i++){
       var choiceText = currentQuestion.answers[i];
       var choiceBtn = document.createElement("button");
@@ -90,6 +89,17 @@ function startQuiz() {
     }
   }
 
+  function showNextQuestion() {
+    var questionElement = document.getElementsByClassName("question");
+    questionElement.innerHTML = questions[currentQuestionIndex].question;
+    currentQuestionIndex++;
+    if (currentQuestionIndex >= questions.length) {
+      // clear the current question index
+      currentQuestionIndex = 0;
+    }
+    }
+
+    //add green background on button when correcct, red when incorrect.
 function checkAnswer(event) {
   var buttonEl = event.target;
 
@@ -99,8 +109,12 @@ function checkAnswer(event) {
 
   if (buttonEl.value !== questions[currentQuestionIndex].correct){
     timerCount -= 10;
+    //choiceBtn.setAttribute("style", "background-color: red;");
+    //chooiceBtn.setAttribute(".incorrect");
+    incorrect.textContent = "Incorrect!";
+    footer.removeAttribute("class", "hidden")
   }
-
+  
   currentQuestionIndex++;
   if (timerCount <= 0 || currentQuestionIndex=== questions.length){
     endQuiz();
@@ -109,24 +123,21 @@ function checkAnswer(event) {
     getQuestion();
   }
 }
+//get score from timer--------------------------------
+function getScore(){
+
+  var score = timerCount;
+}
+/*renderLastRegistered(timerCount); {
+
+}*/
 
 function endQuiz(){
   clearInterval(timer);
-  //create highscore page to enter intials and show score
+  localStorage.setItem("studentScore", JSON.stringify(timerCount));
+  //create highscore page to enter intials and show score----------------
 }
-//create function for questions and onclick event to next question when answer choosen.
-
-function showNextQuestion() {
-  var questionElement = document.getElementsByClassName("question");
-  questionElement.innerHTML = questions[currentQuestionIndex].question;
-  currentQuestionIndex++;
-  if (currentQuestionIndex >= questions.length) {
-    // clear the current question index
-    currentQuestionIndex = 0;
-  }
-  }
   
-  //add onclick event to next question with green background on button when correcct, red when incorrect.
     
     startButton.addEventListener("click", startQuiz);
 

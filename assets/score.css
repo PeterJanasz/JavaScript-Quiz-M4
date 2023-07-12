@@ -24,6 +24,17 @@ main {
     align-items:center;
 }
 
+th{
+    box-sizing: content-box;
+    border: solid 2px;
+}
+
+td{
+    box-sizing: content-box;
+    border: solid 2px;
+    
+}
+
 #container{
 padding-bottom: 40px;
 width: 800px;
