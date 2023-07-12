@@ -1,5 +1,5 @@
 var timerElement = document.querySelector(".timer");
-var scores = document.querySelector(".scores");
+var scores = document.querySelector("#scores");
 var startButton = document.querySelector(".start-button");
 var questionElement = document.querySelector(".question");
 var questionContainer = document.querySelector("#question-container");
@@ -13,6 +13,9 @@ var choice3 = document.querySelector(".choice-3")
 var choice4 = document.querySelector(".choice-4")
 var footer = document.querySelector("footer")
 var feedbackEl = document.querySelector("#feedback")
+var initials = document.querySelector("#initials")
+var submitButton = document.querySelector("#submit")
+var input = document.querySelector("input")
 
 var currentQuestionIndex =0;
 var correct = true;
@@ -141,12 +144,31 @@ function getScore(){
 }*/
 
 function endQuiz(){
+
+
+
   clearInterval(timer);
-  localStorage.setItem("studentScore", JSON.stringify(timerCount));
+  questionContainer.style.display="none";
+  scores.textContent = "Your Score: " + timerCount;
+  console.log(score)
+  initials.removeAttribute("class");
+  //create container for user to input initials with their score
+
+
   //create highscore page to enter intials and show score----------------
-  window.location.href = "file:///Users/peterjanasz/Desktop/bootcamp/challenges/Module-4/score.html"
 }
+
+function highScores() {
+
+console.log("click")
+console.log(input.value)
+
+localStorage.setItem("studentScore", JSON.stringify(timerCount));
+}
+
+submitButton.addEventListener("click", highScores)
   
+//window.location.href = "file:///Users/peterjanasz/Desktop/bootcamp/challenges/Module-4/score.html"
     
     startButton.addEventListener("click", startQuiz);
 
