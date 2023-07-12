@@ -14,7 +14,7 @@ var choice4 = document.querySelector(".choice-4")
 var footer = document.querySelector("footer")
 var feedbackEl = document.querySelector("#feedback")
 var initials = document.querySelector("#initials")
-var submitButton = document.querySelector("#submit")
+var submitBtn = document.querySelector("#submit")
 var input = document.querySelector("input")
 
 var currentQuestionIndex =0;
@@ -55,7 +55,7 @@ var questions = [
 //start quiz with timer set at 60sec, subtraccting 10sec for incorrect answer
 function startQuiz() {
   startScreen.setAttribute("class","hidden");
-  questionContainer.removeAttribute("class")
+  questionContainer.removeAttribute("class");
     timerCount = 60;
     timer = setInterval(function() {
       timerCount--;
@@ -69,7 +69,6 @@ function startQuiz() {
       // check if timer count reaches 0
       if (timerCount <= 0) {
         clearInterval(timer);
-        
       }
     }, 1000);
     getQuestion();
@@ -99,7 +98,6 @@ function startQuiz() {
     questionElement.innerHTML = questions[currentQuestionIndex].question;
     currentQuestionIndex++;
     if (currentQuestionIndex >= questions.length) {
-      // clear the current question index
       currentQuestionIndex = 0;
     }
     }
@@ -111,7 +109,6 @@ function checkAnswer(event) {
   if (!buttonEl.matches(".choice")){
     return;
   }
-
   if (buttonEl.value !== questions[currentQuestionIndex].correct){
     timerCount -= 10;
     feedbackEl.removeAttribute("class", "hidden")
@@ -124,18 +121,22 @@ function checkAnswer(event) {
     feedbackEl.removeAttribute("class", "hidden")
   }
   
-
   currentQuestionIndex++;
-  if (timerCount <= 0 || currentQuestionIndex=== questions.length){
+  if (timerCount <= 0){
     endQuiz();
   }
+  
+  else if (currentQuestionIndex=== questions.length){
+    var timeout = setTimeout(endQuiz, 300);
+    endQuiz();
+  }
+
   else {
     var timeout = setTimeout(getQuestion, 300);
-    //getQuestion();
   }
 }
 //get score from timer--------------------------------
-function getScore(){
+/*function getScore(){
 
   var score = timerCount;
 }
@@ -144,13 +145,12 @@ function getScore(){
 }*/
 
 function endQuiz(){
-
-
-
   clearInterval(timer);
   questionContainer.style.display="none";
+  feedbackEl.textContent = "";
+  feedbackEl.setAttribute("class", "hidden");
   scores.textContent = "Your Score: " + timerCount;
-  console.log(score)
+  console.log(timerCount)
   initials.removeAttribute("class");
   //create container for user to input initials with their score
 
@@ -158,15 +158,20 @@ function endQuiz(){
   //create highscore page to enter intials and show score----------------
 }
 
-function highScores() {
+submitBtn.addEventListener("click", function(event) {
+  event.preventDefault();
 
-console.log("click")
-console.log(input.value)
+  window.location.href = "file:///Users/peterjanasz/Desktop/bootcamp/challenges/Module-4/score.html"
 
-localStorage.setItem("studentScore", JSON.stringify(timerCount));
-}
+  var initials = document.querySelector("input").value;
+  var score = timerCount;
 
-submitButton.addEventListener("click", highScores)
+//add initials and score to local storage
+localStorage.setItem("studentInitials", initials);
+localStorage.setItem("studentScore", score);
+})
+
+
   
 //window.location.href = "file:///Users/peterjanasz/Desktop/bootcamp/challenges/Module-4/score.html"
     

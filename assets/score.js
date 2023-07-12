@@ -1,9 +1,9 @@
 var scores = document.querySelector(".scores");
 
 function renderScore() {
-    var lastScore = JSON.parse(localStorage.getItem("studentScore"));
+    var lastScore = (localStorage.getItem("studentScore"));
     if (lastScore !== null) {
-        document.querySelector(".scores").textContent = lastGrade;
+        document.querySelector(".scores").textContent = lastScore;
     } 
     console.log(lastScore)
 }
