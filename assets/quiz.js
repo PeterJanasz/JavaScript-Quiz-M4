@@ -81,7 +81,6 @@ function startQuiz() {
     questionElement.textContent = currentQuestion.question;
     
     answers.innerHTML = "";
-    //add onclick event to next question 
     for (var i = 0; i < currentQuestion.answers.length; i++){
       var choiceText = currentQuestion.answers[i];
       var choiceBtn = document.createElement("button");
@@ -91,7 +90,7 @@ function startQuiz() {
       answerContainer.appendChild(choiceBtn)
     }
   }
-
+//next question 
   function showNextQuestion() {
     var questionElement = document.getElementsByClassName("question");
     questionElement.innerHTML = questions[currentQuestionIndex].question;
@@ -145,6 +144,7 @@ function endQuiz(){
   clearInterval(timer);
   localStorage.setItem("studentScore", JSON.stringify(timerCount));
   //create highscore page to enter intials and show score----------------
+  window.location.href = "file:///Users/peterjanasz/Desktop/bootcamp/challenges/Module-4/score.html"
 }
   
     
