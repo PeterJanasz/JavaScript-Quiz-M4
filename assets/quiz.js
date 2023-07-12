@@ -11,7 +11,8 @@ var choice1 = document.querySelector(".choice-1")
 var choice2 = document.querySelector(".choice-2")
 var choice3 = document.querySelector(".choice-3")
 var choice4 = document.querySelector(".choice-4")
-
+var footer = document.querySelector("footer")
+var feedbackEl = document.querySelector("#feedback")
 
 var currentQuestionIndex =0;
 var correct = true;
@@ -73,6 +74,8 @@ function startQuiz() {
 
 //create function for questions and onclick event to next question when answer choosen.
   function getQuestion() {
+    feedbackEl.textContent = "";
+    feedbackEl.setAttribute("class", "hidden")
     console.log(currentQuestionIndex)
    var currentQuestion = questions[currentQuestionIndex]
     questionElement.textContent = currentQuestion.question;
@@ -109,18 +112,24 @@ function checkAnswer(event) {
 
   if (buttonEl.value !== questions[currentQuestionIndex].correct){
     timerCount -= 10;
+    feedbackEl.removeAttribute("class", "hidden")
     //choiceBtn.setAttribute("style", "background-color: red;");
     //chooiceBtn.setAttribute(".incorrect");
-    incorrect.textContent = "Incorrect!";
-    footer.removeAttribute("class", "hidden")
+    feedbackEl.textContent = "Incorrect!";
+    //feedbackEl.removeAttribute("class", "hidden")
+  } else {
+    feedbackEl.textContent = "Correct!";
+    feedbackEl.removeAttribute("class", "hidden")
   }
   
+
   currentQuestionIndex++;
   if (timerCount <= 0 || currentQuestionIndex=== questions.length){
     endQuiz();
   }
   else {
-    getQuestion();
+    var timeout = setTimeout(getQuestion, 300);
+    //getQuestion();
   }
 }
 //get score from timer--------------------------------
