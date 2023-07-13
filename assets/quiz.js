@@ -161,7 +161,7 @@ function endQuiz(){
 submitBtn.addEventListener("click", function(event) {
   event.preventDefault();
 
-  window.location.href="../score.html"
+  window.location.href="/Module-4/score.html"
 
   var initials = document.querySelector("input").value;
   var score = timerCount;
