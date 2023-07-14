@@ -130,7 +130,7 @@ function checkAnswer(event) {
 
   else if (currentQuestionIndex === questions.length) {
     var timeout = setTimeout(endQuiz, 300);
-    endQuiz();
+    //endQuiz();
   }
 
   else {
