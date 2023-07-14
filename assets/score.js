@@ -1,13 +1,19 @@
 var scores = document.querySelector(".scores");
+var clear=document.querySelector("#clear")
 
-function renderScore() {
-var studentScore = localStorage.getItem("studentScore");
-console.log(studentScore)
+var highScores = JSON.parse(localStorage.getItem("storedUsers"));
 
-    /*var lastScore = (localStorage.getItem("studentScore"));
-    if (lastScore !== null) {
-        return;
-    } 
-    document.querySelector(".scores").textContent = lastScore;
-    console.log(lastScore);*/
+for (var i =0; i < highScores.length; i ++){
+    var highScoreList = document.createElement("li");
+
+    highScoreList.textContent = "Initials: " + highScores[i].initials + " " + "Score: " + highScores[i].score;
+    scores.appendChild(highScoreList);
 }
+
+function clearHighScores() {
+window.localStorage.removeItem("storedUsers")
+window.location.reload();
+}
+
+clear.addEventListener("click", clearHighScores);
+

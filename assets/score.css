@@ -41,12 +41,15 @@ align-items: center;
 ul {
     list-style-type: none;
    }
-   
+
 .initials{
     display: flex;
 }
 .scores{
     display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: -20px;
 }
 
 button {

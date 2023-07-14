@@ -17,6 +17,7 @@ var initials = document.querySelector("#initials")
 var submitBtn = document.querySelector("#submit")
 var input = document.querySelector("input")
 
+var storedUsers = []
 var currentQuestionIndex =0;
 var correct = true;
 var timer;
@@ -161,18 +162,27 @@ function endQuiz(){
 submitBtn.addEventListener("click", function(event) {
   event.preventDefault();
 
-  window.location.href="/Module-4/score.html"
+  //window.location.href="/Module-4/score.html"
+  window.location.href="/score.html"
 
-  var initials = document.querySelector("input").value;
   var score = timerCount;
-  console.log(initials)
-  console.log(score)
-//add initials and score to local storage
-localStorage.setItem("studentInitials", initials);
-localStorage.setItem("studentScore", score);
-renderScore();
-})
+  var initials = document.querySelector("input").value; 
 
+  var user = {
+    initials: initials,
+    score: score,
+    };
+
+  var highScores = JSON.parse(localStorage.getItem("storedUsers"));
+
+  if (highScores !== null){
+    storedUsers = highScores;
+  }
+
+  storedUsers.push(user);
+  localStorage.setItem("storedUsers", JSON.stringify(storedUsers));
+
+})
   
 //window.location.href = "file:///Users/peterjanasz/Desktop/bootcamp/challenges/Module-4/score.html"
     
