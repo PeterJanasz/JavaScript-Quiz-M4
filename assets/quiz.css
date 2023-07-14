@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
@@ -11,7 +13,7 @@ header {
     border-bottom: 1px solid blue
 }
 
-h1{
+h1 {
     margin: 0px;
     text-align: center;
     align-self: center;
@@ -21,20 +23,20 @@ main {
     margin-top: 100px;
     display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: center;
 }
 
-#container{
-padding-bottom: 40px;
-width: 800px;
-max-width: 80%;
-border: 2px;
-border-style: solid;
-border-radius: 5px;
-box-shadow: 0 0 10px 2px;
-display: flex;
-flex-direction: column;
-align-items: center;
+#container {
+    padding-bottom: 40px;
+    width: 800px;
+    max-width: 80%;
+    border: 2px;
+    border-style: solid;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #question-container {
@@ -42,6 +44,7 @@ align-items: center;
     flex-direction: column;
     align-items: center;
 }
+
 button {
     background-color: rgb(117, 117, 244);
     box-shadow: 10px;
@@ -64,12 +67,12 @@ button:hover {
     background-color: red;
 }
 
-#start-screen{
+#start-screen {
     text-align: center;
 }
 
-.hidden{
-display: none;
+.hidden {
+    display: none;
 }
 
 #answers {
