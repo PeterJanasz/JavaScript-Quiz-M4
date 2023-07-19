@@ -13,4 +13,4 @@ Created button to clear screen and links to navigate between quiz and high score
 
 ![Screenshot of website](assets/Screenshot%202023-07-13%20at%209.52.38%20PM.png))
 
- - [Deployed] https://peterjanasz.github.io/Module-4/
+ - [Deployed] https://peterjanasz.github.io/JavaScript-Quiz-M4/
